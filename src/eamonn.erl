@@ -1,0 +1,4 @@
+-module(eamonn).
+
+test() ->
+	test.
