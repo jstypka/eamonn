@@ -1,2 +1,2 @@
 # eamonn
-Highly parallel Erlang webserver using the Tibor file cache
+ A simple, yet performant Erlang webserver serving static files using the Tibor file cache
