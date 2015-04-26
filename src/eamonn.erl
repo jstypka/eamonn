@@ -1,4 +1,0 @@
--module(eamonn).
-
-test() ->
-	test.

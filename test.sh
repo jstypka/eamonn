@@ -1,4 +1,4 @@
-Paths="1.png 2.png img/3.png"
+Paths="1.png 2.png 3.png"
 for p in $Paths; do
 	wget --quiet -O tmpfile http://localhost:3000/$p
 	hash1=`md5sum ${HOME}/eamonn_server/${p} | awk '{ print $1 }'`

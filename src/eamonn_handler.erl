@@ -34,22 +34,14 @@ handle('GET', Filepath, _Req) ->
 
     String = binary_to_list(Concatenated, 1, iolist_size(Concatenated) - 1),
 
-    case catch tibor_nif:get(String) of
+    case catch eamonn_tibor_nif:get(String) of
         {'EXIT', {badarg, _}} ->
             io:format("[INFO] File ~p doesn't exist~n", [String]),
             {404, [], <<"Not Found">>};
         Binary ->
+            io:format("[INFO] File ~p successfully served~n", [String]),
             {ok, [], Binary}
     end;
-
-
-handle('GET', [<<"sendfile">>], _Req) ->
-    %% Returning {file, "/path/to/file"} instead of the body results
-    %% in Elli using sendfile.
-    %% All required headers should be added by the handler.
-    F = "../README.md",
-    Size = elli_util:file_size(F),
-    {ok, [{<<"Content-Length">>, Size}], {file, F}};
 
 
 handle(_, _, _Req) ->
